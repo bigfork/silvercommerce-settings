@@ -26,7 +26,6 @@ class ControllerExtension extends Extension
 
         // Don't run this during dev/build or dev/tasks
         if (!in_array(get_class($this->owner), $disallowed_controllers)) {
-            var_dump(get_class($this->owner));
             // Set global local based on Site Config
             $config = SiteConfig::current_site_config();
             i18n::set_locale($config->SiteLocale);
