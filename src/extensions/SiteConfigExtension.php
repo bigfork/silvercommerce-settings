@@ -52,6 +52,20 @@ class SiteConfigExtension extends DataExtension
                 )
             ]
         );
+
+        $fields->addFieldToTab(
+            "Root.Shop",
+            ToggleCompositeField::create(
+                'MiscSettings',
+                _t("Settings.MiscSettings", "Misc Settings"),
+                [
+                    CheckboxField::create(
+                        "ShowPriceAndTax",
+                        $this->owner->fieldLabel("ShowPriceAndTax")
+                    )
+                ]
+            )
+        );
     }
 
     public function onBeforeWrite()
