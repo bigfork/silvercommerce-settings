@@ -1,0 +1,10 @@
+---
+Name: silvercommercesettingsconfig
+---
+## Extensions
+SilverStripe\Control\Controller:
+  extensions:
+    - SilverCommerce\Settings\Extensions\ControllerExtension
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    - SilverCommerce\Settings\Extensions\SiteConfigExtension
