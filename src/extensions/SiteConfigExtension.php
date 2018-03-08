@@ -22,6 +22,21 @@ class SiteConfigExtension extends DataExtension
         "ShowPriceAndTax" => "Boolean",
     ];
 
+    private static $casting = [
+        "InlineContactAddress" => "Text",
+        "TrimmedContactPhone" => "Varchar(15)"
+    ];
+
+    public function getInlineContactAddress()
+    {
+        return trim(preg_replace('/\s\s+/', ', ', $this->owner->ContactAddress));
+    }
+
+    public function getTrimmedContactPhone()
+    {
+        return trim(str_replace(" ","",$this->owner->ContactPhone));
+    }
+
     public function updateCMSFields(FieldList $fields)
     {
         $fields->removeByName("ContactPhone");
