@@ -2,7 +2,8 @@
 
 namespace SilverCommerce\Settings\Extensions;
 
-use Alcohol\ISO4217;
+use SilverStripe\i18n\i18n;
+use SilverStripe\Assets\Image;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\DataExtension;
@@ -10,7 +11,7 @@ use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\ToggleCompositeField;
-use SilverStripe\i18n\i18n;
+use SilverStripe\AssetAdmin\Forms\UploadField;
 
 class SiteConfigExtension extends DataExtension
 {
@@ -20,6 +21,10 @@ class SiteConfigExtension extends DataExtension
         "ContactEmail" => "Varchar(255)",
         "ContactAddress" => "Text",
         "ShowPriceAndTax" => "Boolean",
+    ];
+
+    private static $has_one = [
+        "CardLogos" => Image::class
     ];
 
     private static $casting = [
@@ -77,6 +82,10 @@ class SiteConfigExtension extends DataExtension
                     CheckboxField::create(
                         "ShowPriceAndTax",
                         $this->owner->fieldLabel("ShowPriceAndTax")
+                    ),
+                    UploadField::create(
+                        "CardLogos",
+                        $this->owner->fieldLabel("CardLogos")
                     )
                 ]
             )
