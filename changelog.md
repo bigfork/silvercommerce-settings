@@ -8,3 +8,7 @@
 
 * Minor fixes
 * Add extra config settings
+
+## 1.0.2
+
+* Add casted variables to siteconfig
