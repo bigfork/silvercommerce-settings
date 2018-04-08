@@ -12,3 +12,7 @@
 ## 1.0.2
 
 * Add casted variables to siteconfig
+
+## 1.0.3
+
+* Add show tax string variable

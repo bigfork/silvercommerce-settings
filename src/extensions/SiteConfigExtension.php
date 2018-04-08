@@ -21,6 +21,7 @@ class SiteConfigExtension extends DataExtension
         "ContactEmail" => "Varchar(255)",
         "ContactAddress" => "Text",
         "ShowPriceAndTax" => "Boolean",
+        "ShowPriceTaxString" => "Boolean"
     ];
 
     private static $has_one = [
@@ -49,6 +50,7 @@ class SiteConfigExtension extends DataExtension
         $fields->removeByName("ContactAddress");
         $fields->removeByName("SiteLocale");
         $fields->removeByName("ShowPriceAndTax");
+        $fields->removeByName("ShowPriceTaxString");
 
         $fields->addFieldsToTab(
             "Root.Main",
@@ -79,10 +81,16 @@ class SiteConfigExtension extends DataExtension
                 'MiscSettings',
                 _t("Settings.MiscSettings", "Misc Settings"),
                 [
-                    CheckboxField::create(
-                        "ShowPriceAndTax",
-                        $this->owner->fieldLabel("ShowPriceAndTax")
-                    ),
+                    CheckboxField::create("ShowPriceAndTax")
+                        ->setDescription(_t(
+                            "SilverCommerce\Settings.ShowPriceAndTaxDescription",
+                            "Show product prices including tax"
+                        )),
+                    CheckboxField::create("ShowPriceTaxString")
+                        ->setDescription(_t(
+                            "SilverCommerce\Settings.ShowProductTaxStringDescription",
+                            "Show 'inc/exc TAX' after price"
+                        )),
                     UploadField::create(
                         "CardLogos",
                         $this->owner->fieldLabel("CardLogos")
