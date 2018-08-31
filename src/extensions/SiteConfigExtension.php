@@ -17,7 +17,7 @@ class SiteConfigExtension extends DataExtension
 {
     private static $db = [
         "SiteLocale" => "Varchar(5)",
-        "ContactPhone" => "Varchar(15)",
+        "ContactPhone" => "Varchar(25)",
         "ContactEmail" => "Varchar(255)",
         "ContactAddress" => "Text",
         "ShowPriceAndTax" => "Boolean",

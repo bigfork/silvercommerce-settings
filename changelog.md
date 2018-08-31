@@ -16,3 +16,7 @@
 ## 1.0.3
 
 * Add show tax string variable
+
+## 1.0.4
+
+* Extend contact phone number length
