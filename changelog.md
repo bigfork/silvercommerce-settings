@@ -20,3 +20,7 @@
 ## 1.0.4
 
 * Extend contact phone number length
+
+## 1.0.5
+
+* Don't make global changes to locale if running unit tests
