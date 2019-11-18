@@ -3,6 +3,7 @@
 namespace SilverCommerce\Settings\Extensions;
 
 use NumberFormatter;
+use SilverStripe\Core\Environment;
 use SilverStripe\i18n\i18n;
 use SilverStripe\Core\Extension;
 use SilverStripe\Dev\DevelopmentAdmin;
@@ -18,14 +19,15 @@ class ControllerExtension extends Extension
      */
     public function onBeforeInit()
     {
+        $tests = Environment::getEnv('UNIT_TESTS_RUNNING');
         $disallowed_controllers = [
             DevelopmentAdmin::class,
             DevBuildController::class,
             DatabaseAdmin::class
         ];
 
-        // Don't run this during dev/build or dev/tasks
-        if (!in_array(get_class($this->owner), $disallowed_controllers)) {
+        // Don't run this during dev/build or dev/tasks or when unit tests are running
+        if (!$tests && !in_array(get_class($this->owner), $disallowed_controllers)) {
             // Set global local based on Site Config
             $config = SiteConfig::current_site_config();
             i18n::set_locale($config->SiteLocale);
